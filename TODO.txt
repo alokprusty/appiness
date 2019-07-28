@@ -1,0 +1,55 @@
+Prerequisites
+1. NodeJS
+2. MongoDB
+
+How to setup the server
+1. run npm install command in the file location to install all the required dependencies
+2. run mongod on command prompt to run the mongo server
+3. add your database url to config.js file
+3. run npm start to run the node server and server should start on PORT 3001 and will get a message that 'Server Runing on 3001' then you are ready to go
+
+Workflow of the Application
+1. Adding Category
+URL: http://localhost:3001/api/category/addCategory
+Method: POST
+Content-Type: application/json
+Body: name (String name of Category. Example: Men.)
+Example of Body: {
+	"name":"Women"
+}
+Description: Send the request in POST method with mentioned URL with content type and mentioned body. After sending the request you must get response.
+Response: status (1 for Success, -1 for Error), message (Message about the response), result (added category record as response)
+
+2. Adding Product
+URL: http://localhost:3001/api/product/addProduct
+Method: POST
+Content-Type: application/json
+Body: name (String name of Product. Example: "Shoe".), price (Number Price of Product. Example: 3000), categoryId (String Id of Category. Example: "5d3dc0dd1f38673618720191". )
+Example of Body: {
+    "name": "Shoe",
+    "price": 300,
+    "categoryId": "5d3dc0dd1f38673618720191"
+}
+Description: Send the request in POST method with mentioned URL with content type and mentioned body. After sending the request you must get response.
+Response: status (1 for Success, -1 for Error), message (Message about the response), result (added product record as response)
+
+3. Get all Category
+URL: http://localhost:3001/api/category/getAllCategory
+Method: GET
+Description: Send the request in GET method with mentioned URL . After sending the request you must get response.
+Response: status (1 for Success, -1 for Error, 0 for No Record Found), message (Message about the response), result (all category record as response)
+
+4. Get all Product by Category
+URL: http://localhost:3001/api/product/productByCategory/:id
+Method: GET
+Parameter: id(id of the Category. Example: "5d3dc0dd1f38673618720191")
+Example of URL: http://localhost:3001/api/product/productByCategory/5d3dc0dd1f38673618720191
+Description: Send the request in GET method with mentioned URL. After sending the request you must get response.
+Response: status (1 for Success, -1 for Error, 0 for No Record Found), message (Message about the response), result (all product by category record as response)
+
+5. Delete Category
+URL: http://localhost:3001/api/category/deleteCategory/:id
+Method: DELETE
+Example of URL: http://localhost:3001/api/category/deleteCategory/5d3dc0dd1f38673618720191
+Description: Send the request in DELETE method with mentioned URL. After sending the request you must get response.
+Response: status (1 for Success, -1 for Error), message (Message about the response), category (deleted category record as response), product (deleted product record as response)
